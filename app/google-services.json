@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "75576282150",
+    "project_id": "c2ticketingadmin",
+    "storage_bucket": "c2ticketingadmin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75576282150:android:45472d465b0aa72e0ceae7",
+        "android_client_info": {
+          "package_name": "com.ctwofinalproject.ticketing.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75576282150-ijoo33rkpm4501rs9p3vdear9hfcg6qi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ctwofinalproject.ticketing.admin",
+            "certificate_hash": "889071e6d13aa38eb8be300c04774aabb807a5ce"
+          }
+        },
+        {
+          "client_id": "75576282150-2snqv01ud7n6k1c16csr4teqavb3n8ib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzeQVj082KCxjyy_N6FlYWmXXZj7EdID8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75576282150-2snqv01ud7n6k1c16csr4teqavb3n8ib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
