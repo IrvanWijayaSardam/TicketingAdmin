@@ -31,7 +31,6 @@
         android:background="@drawable/radius_box">
     </RelativeLayout>
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/flight"
         android:layout_width="80dp"

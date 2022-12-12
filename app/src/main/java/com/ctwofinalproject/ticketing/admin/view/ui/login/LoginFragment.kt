@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.auth0.android.jwt.JWT
 import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.data.Login
@@ -47,6 +48,7 @@ class LoginFragment : Fragment() {
                 viewModelProto.editData(jwt.getClaim("firstname").asString().toString(),jwt.getClaim("lastname").asString().toString()
                     ,jwt.getClaim("gender").asString().toString(),jwt.getClaim("email").asString().toString(),jwt.getClaim("phone").asString().toString(),
                     jwt.getClaim("birthdate").asString().toString(),jwt.getClaim("pictures").asString().toString(),token,true)
+                Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeFragment)
                 showSnack("Login Berhasil")
                 //goToHome()
             } else {

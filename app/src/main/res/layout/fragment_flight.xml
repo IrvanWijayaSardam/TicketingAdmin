@@ -8,15 +8,27 @@
     android:background="@color/background_color_white"
     tools:context=".view.ui.flight.FlightFragment">
 
-    <TextView
-        android:id="@+id/tvBookingFragmentBooking"
+    <ImageView
+        android:id="@+id/ivGotoBackFromFragmentFlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Flight"
+        android:layout_margin="30dp"
+        android:src="@drawable/ic_baseline_arrow_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        />
+    <TextView
+        android:id="@+id/tvDepartureFlightFragmentShowTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_ticket"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="30dp"
+        android:textColor="@color/primary_font_color"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="18sp"
         android:textAlignment="center"
@@ -28,7 +40,7 @@
         android:layout_marginTop="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBookingFragmentBooking"
+        app:layout_constraintTop_toBottomOf="@+id/ivGotoBackFromFragmentFlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0"
         >

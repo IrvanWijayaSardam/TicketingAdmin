@@ -65,6 +65,7 @@
     <string name="more_info">more info</string>
     <string name="flight_no">Flight No</string>
     <string name="total_passenger">Total Passenger</string>
+    <string name="create_ticket">Create Ticket</string>
 
     <!--  dummy country  -->
     <string-array name="country">

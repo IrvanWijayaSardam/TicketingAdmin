@@ -9,7 +9,11 @@
         android:id="@+id/loginFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.splash.SplashFragment"
@@ -18,5 +22,32 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_flightFragment"
+            app:destination="@id/flightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.FlightFragment"
+        android:label="fragment_flight"
+        tools:layout="@layout/fragment_flight" >
+        <action
+            android:id="@+id/action_flightFragment_to_airportFragment"
+            app:destination="@id/airportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/airportFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.airport.AirportFragment"
+        android:label="fragment_airport"
+        tools:layout="@layout/fragment_airport" >
+        <action
+            android:id="@+id/action_airportFragment_to_flightFragment"
+            app:destination="@id/flightFragment" />
     </fragment>
 </navigation>
