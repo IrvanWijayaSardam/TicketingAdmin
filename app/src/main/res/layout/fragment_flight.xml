@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background_color_white"
+    android:background="#D4E0FF"
     tools:context=".view.ui.flight.FlightFragment">
 
     <ImageView
@@ -225,7 +225,7 @@
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
                 >
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -237,7 +237,124 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:layout="@layout/fragment_select_one_way" />
-                </LinearLayout>
+                    <ImageView
+                        android:layout_marginTop="13dp"
+                        android:layout_below="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
+                        android:id="@+id/depatureIcon"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/departures"
+                        />
+                    <TextView
+                        android:id="@+id/txtDepature"
+                        android:layout_toEndOf="@+id/depatureIcon"
+                        android:layout_below="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/primary_font_color"
+                        android:text="@string/depature_time"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/primary_font_color"
+                        android:text="00.00"
+                        android:id="@+id/txtDepatureTime"
+                        android:layout_below="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
+                        android:layout_toEndOf="@+id/txtDepature"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/iconTimeDepature"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_below="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/txtDepatureTime"
+                        android:src="@drawable/ic_baseline_access_time_24"/>
+                    <ImageView
+                        android:id="@+id/arrivalIcon"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/depatureIcon"
+                        android:layout_marginStart="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/landing"
+                        />
+                    <TextView
+                        android:id="@+id/txtArrival"
+                        android:layout_toEndOf="@+id/arrivalIcon"
+                        android:layout_below="@+id/txtDepature"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/primary_font_color"
+                        android:text="@string/arrival_time"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/primary_font_color"
+                        android:text="00.00"
+                        android:id="@+id/txtArrivalTime"
+                        android:layout_below="@+id/txtDepatureTime"
+                        android:layout_toEndOf="@+id/txtDepature"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/iconTimeArrival"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_below="@+id/iconTimeDepature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/txtDepatureTime"
+                        android:src="@drawable/ic_baseline_access_time_24"/>
+
+                    <TextView
+                        android:id="@+id/txt_selectClass"
+                        android:textColor="@color/primary_font_color"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Select Class"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/iconTimeDepature"
+                        android:layout_below="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <Spinner
+                        android:layout_toEndOf="@id/iconTimeDepature"
+                        android:layout_below="@+id/txt_selectClass"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/txtPrice"
+                        android:layout_toEndOf="@+id/arrivalIcon"
+                        android:layout_below="@+id/txtArrival"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/primary_font_color"
+                        android:text="@string/input_price"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iconTimeArrival"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <Button

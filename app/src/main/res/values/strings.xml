@@ -66,6 +66,9 @@
     <string name="flight_no">Flight No</string>
     <string name="total_passenger">Total Passenger</string>
     <string name="create_ticket">Create Ticket</string>
+    <string name="depature_time">Depature Time</string>
+    <string name="arrival_time">Arrival Time</string>
+    <string name="input_price">Input Price :</string>
 
     <!--  dummy country  -->
     <string-array name="country">
