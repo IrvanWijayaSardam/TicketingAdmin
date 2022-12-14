@@ -96,4 +96,9 @@
         <item>Surabaya</item>
         <item>Samarinda</item>
     </string-array>
+
+    <string-array name="classType">
+        <item>Business</item>
+        <item>Economy</item>
+    </string-array>
 </resources>

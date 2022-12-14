@@ -1,5 +1,7 @@
 package com.ctwofinalproject.ticketing.admin.view.ui.flight
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -7,19 +9,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import android.widget.TimePicker
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.ctwofinalproject.ticketing.admin.R
+import com.ctwofinalproject.ticketing.admin.data.Flight
+import com.ctwofinalproject.ticketing.admin.data.FlightBody
+import com.ctwofinalproject.ticketing.admin.data.Ticket
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentFlightBinding
+import com.ctwofinalproject.ticketing.admin.viewmodel.FlightViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Calendar
 
 @AndroidEntryPoint
-class FlightFragment : Fragment() {
+class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
     private var _binding : FragmentFlightBinding?                          = null
     private val binding get()                                              = _binding!!
     lateinit var sharedPref                                                : SharedPreferences
     lateinit var editPref                                                  : SharedPreferences.Editor
+    val flightViewModel                                                    : FlightViewModel by viewModels()
+
+    var hour = 0
+    var minute = 0
+
+    var savedHour = 0
+    var savedMinute = 0
+
+    var selectTime = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,6 +96,25 @@ class FlightFragment : Fragment() {
                 transaction?.commit()
             }
 
+            btnCreateFlight.setOnClickListener{
+                flightViewModel.createFlight(FlightBody(Flight("20:30:12", sharedPref.getInt("airportIdFrom", 0),
+                    "22:15:09", 1,sharedPref.getString("departureDateForApi", "").toString(),
+                    1, sharedPref.getInt("airportIdTo",0),sharedPref.getString("returnDateForApi","")),
+                    Ticket("Indonesia", 10000000, 1)))
+            }
+
+
+            iconTimeDepature.setOnClickListener{
+                selectTime = "depature"
+                getDateTimePicker()
+                TimePickerDialog(requireContext(),this@FlightFragment,hour,minute,true).show()
+            }
+
+            iconTimeArrival.setOnClickListener{
+                selectTime = "arrival"
+                getDateTimePicker()
+                TimePickerDialog(requireContext(),this@FlightFragment,hour,minute,true).show()
+            }
 
             tvFromAirportCodeFragmentBooking.text = sharedPref.getString("airportCodeFrom","YIA")
             tvFromAirportNameFragmentBooking.text = sharedPref.getString("airportNameFrom","AirportName")
@@ -83,12 +123,28 @@ class FlightFragment : Fragment() {
             tvToAirportNameFragmentBooking.text   = sharedPref.getString("airportNameTo","Airport Name")
         }
     }
+    private fun getDateTimePicker(){
+        val cal = Calendar.getInstance()
+        hour = cal.get(Calendar.HOUR)
+        minute = cal.get(Calendar.MINUTE)
+    }
 
     fun gotoSelectAirport(fromto : String, fFragment : String){
         var bund = Bundle()
         bund.putString("fromto",fromto)
         bund.putString("fromFragment",fFragment)
         Navigation.findNavController(requireView()).navigate(R.id.action_flightFragment_to_airportFragment,bund)
+    }
+
+    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        savedHour = hourOfDay
+        savedMinute = minute
+
+        if (selectTime.equals("arrival")){
+            binding.txtArrivalTime.text = "$savedHour:$savedMinute:00"
+        }else{
+            binding.txtDepatureTime.text = "$savedHour:$savedMinute:00"
+        }
     }
 
 }

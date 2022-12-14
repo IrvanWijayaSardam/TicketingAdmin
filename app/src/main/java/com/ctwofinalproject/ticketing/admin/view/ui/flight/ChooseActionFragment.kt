@@ -22,6 +22,11 @@ class ChooseActionFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initListener()
+    }
+
     private fun initListener() {
 
         binding?.run {
