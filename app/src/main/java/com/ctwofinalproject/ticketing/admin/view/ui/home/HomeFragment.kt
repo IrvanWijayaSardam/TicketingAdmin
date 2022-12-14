@@ -12,8 +12,8 @@ import com.ctwofinalproject.ticketing.admin.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
-    private var _binding : FragmentHomeBinding?                         = null
-    private val binding get()                                              = _binding!!
+    private var _binding : FragmentHomeBinding?                           = null
+    private val binding get()                                             = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
         binding?.run {
             flight.setOnClickListener {
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_flightFragment)
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_chooseActionFragment)
             }
         }
     }

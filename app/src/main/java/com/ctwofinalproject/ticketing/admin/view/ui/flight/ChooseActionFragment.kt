@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentChooseActionBinding
 
@@ -17,9 +18,20 @@ class ChooseActionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentChooseActionBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    private fun initListener() {
+
+        binding?.run {
+            btnInputDataFlight.setOnClickListener {
+                Navigation.findNavController(requireView()).navigate(R.id.action_chooseActionFragment_to_flightFragment)
+            }
+            btnSeeListFlight.setOnClickListener{
+                Navigation.findNavController(requireView()).navigate(R.id.action_chooseActionFragment_to_listAirportFragment)
+            }
+        }
     }
 
 }
