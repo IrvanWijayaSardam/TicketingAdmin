@@ -69,6 +69,7 @@
     <string name="depature_time">Depature Time</string>
     <string name="arrival_time">Arrival Time</string>
     <string name="input_price">Input Price :</string>
+    <string name="create">CREATE</string>
 
     <!--  dummy country  -->
     <string-array name="country">

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ui.flight.ChooseActionFragment">
+    <Button
+        android:id="@+id/btnInputDataFlight"
+        android:layout_centerHorizontal="true"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button"
+        android:text="Input Data Flight"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/btnSeeListFlight"
+        android:layout_below="@+id/btnInputDataFlight"
+        android:layout_centerHorizontal="true"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button"
+        android:text="See List Flight"
+        android:textAllCaps="false" />
 
 
 
