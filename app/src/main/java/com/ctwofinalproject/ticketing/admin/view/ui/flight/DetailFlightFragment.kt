@@ -40,6 +40,7 @@ class DetailFlightFragment : Fragment() {
             ivGotoBackFromFDetailFlight.setOnClickListener {
                 Navigation.findNavController(binding.root).popBackStack()
             }
+
         }
     }
 

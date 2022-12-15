@@ -56,6 +56,14 @@ class ShowListFlightFragment : Fragment() {
             override fun onItemClick(dataItemFlight: DataItemFlight) {
                 var bund = Bundle()
                 bund.putInt("idFlight",dataItemFlight.id!!.toInt())
+                bund.putString("depatureTime", dataItemFlight.departureTime.toString())
+                bund.putInt("depatureAirport", dataItemFlight.departureAirport!!.toInt())
+                bund.putString("depatureDate", dataItemFlight.departureDate.toString())
+
+                bund.putString("arrivalTime", dataItemFlight.arrivalTime.toString())
+                bund.putInt("arrivalAirport", dataItemFlight.arrivalAirport!!.toInt())
+                bund.putString("arrivalDate", dataItemFlight.arrivalDate.toString())
+
                 Navigation.findNavController(requireView()).navigate(R.id.action_showListFlightFragment_to_detailFlightFragment,bund)
             }
 
