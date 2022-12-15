@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +58,11 @@ class ShowListFlightFragment : Fragment() {
                 bund.putInt("idFlight",dataItemFlight.id!!.toInt())
                 Navigation.findNavController(requireView()).navigate(R.id.action_showListFlightFragment_to_detailFlightFragment,bund)
             }
+
+            override fun onItemDelete(dataItemFlight: DataItemFlight) {
+                Toast.makeText(requireContext(), "ID YANG AKAN DI DELETE ${dataItemFlight.id.toString()}", Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 }

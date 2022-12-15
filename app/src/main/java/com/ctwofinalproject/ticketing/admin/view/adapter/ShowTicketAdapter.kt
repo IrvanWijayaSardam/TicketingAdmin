@@ -31,6 +31,9 @@ class ShowTicketAdapter(): RecyclerView.Adapter<ShowTicketAdapter.ViewHolder>() 
             binding.btnUpdate.setOnClickListener {
                 listener.onItemClick(differ.currentList[adapterPosition])
             }
+            binding.btnDelete.setOnClickListener {
+                listener.onItemDelete(differ.currentList[adapterPosition])
+            }
         }
     }
 
@@ -52,7 +55,9 @@ class ShowTicketAdapter(): RecyclerView.Adapter<ShowTicketAdapter.ViewHolder>() 
 
     interface onItemClickListener {
         fun onItemClick(dataItemFlight: DataItemFlight)
+        fun onItemDelete(dataItemFlight: DataItemFlight)
     }
+
 
     fun setOnItemClickListener(listener: onItemClickListener){
         this.listener = listener
