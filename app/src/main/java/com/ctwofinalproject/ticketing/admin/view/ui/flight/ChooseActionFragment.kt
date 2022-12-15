@@ -34,7 +34,7 @@ class ChooseActionFragment : Fragment() {
                 Navigation.findNavController(requireView()).navigate(R.id.action_chooseActionFragment_to_flightFragment)
             }
             btnSeeListFlight.setOnClickListener{
-                Navigation.findNavController(requireView()).navigate(R.id.action_chooseActionFragment_to_listAirportFragment)
+                Navigation.findNavController(requireView()).navigate(R.id.showListFlightFragment)
             }
         }
     }

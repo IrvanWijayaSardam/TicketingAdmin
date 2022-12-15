@@ -62,10 +62,27 @@
         <action
             android:id="@+id/action_chooseActionFragment_to_listAirportFragment"
             app:destination="@id/listAirportFragment" />
+        <action
+            android:id="@+id/action_chooseActionFragment_to_showListFlightFragment"
+            app:destination="@id/showListFlightFragment" />
     </fragment>
     <fragment
         android:id="@+id/listAirportFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.ListAirportFragment"
         android:label="fragment_list_airport"
         tools:layout="@layout/fragment_list_airport" />
+    <fragment
+        android:id="@+id/showListFlightFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.ShowListFlightFragment"
+        android:label="fragment_show_list_flight"
+        tools:layout="@layout/fragment_show_list_flight" >
+        <action
+            android:id="@+id/action_showListFlightFragment_to_detailFlightFragment"
+            app:destination="@id/detailFlightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFlightFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.DetailFlightFragment"
+        android:label="fragment_detail_flight"
+        tools:layout="@layout/fragment_detail_flight" />
 </navigation>

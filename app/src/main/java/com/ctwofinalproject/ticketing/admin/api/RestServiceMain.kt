@@ -3,10 +3,7 @@ package com.ctwofinalproject.ticketing.admin.api
 import com.ctwofinalproject.ticketing.admin.data.FlightBody
 import com.ctwofinalproject.ticketing.admin.data.Login
 import com.ctwofinalproject.ticketing.admin.data.User
-import com.ctwofinalproject.ticketing.admin.model.ResponseAirport
-import com.ctwofinalproject.ticketing.admin.model.ResponseFlight
-import com.ctwofinalproject.ticketing.admin.model.ResponseLogin
-import com.ctwofinalproject.ticketing.admin.model.ResponseMessage
+import com.ctwofinalproject.ticketing.admin.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,18 +19,21 @@ interface RestServiceMain {
             @Body body: Login
         ) : Call<ResponseLogin>
 
-    @GET("api/airports")
-    fun getAirport(
-    ) : Call<ResponseAirport>
+        @GET("api/airports")
+        fun getAirport(
+        ) : Call<ResponseAirport>
 
-    @GET("api/airports/{query}")
-    fun searchAirport(
-        @Path("query") query : String
-    ) : Call<ResponseAirport>
+        @GET("api/airports/{query}")
+        fun searchAirport(
+            @Path("query") query : String
+        ) : Call<ResponseAirport>
 
-    @POST("api/flight/create")
-    fun createFlight(
-        @Body body : FlightBody
-    ): Call<ResponseFlight>
+        @POST("api/flight/create")
+        fun createFlight(
+            @Body body : FlightBody
+        ): Call<ResponseFlight>
+
+        @GET("api/flight")
+        fun getAllFlight() : Call<ResponseGetAllFlight>
 
 }
