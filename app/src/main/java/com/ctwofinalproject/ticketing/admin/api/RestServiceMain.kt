@@ -36,4 +36,9 @@ interface RestServiceMain {
         @GET("api/flight")
         fun getAllFlight() : Call<ResponseGetAllFlight>
 
+        @POST("api/flight/create")
+        fun updateFlight(
+                @Body body: FlightBody
+        ): Call<ResponseFlight>
+
 }

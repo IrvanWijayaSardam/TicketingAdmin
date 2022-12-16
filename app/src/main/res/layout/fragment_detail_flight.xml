@@ -155,7 +155,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvFragmentContainer"
+        android:id="@+id/cvDateFligth"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_marginStart="27dp"
@@ -169,19 +169,31 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/llDepatrtureDateFragmentOneWay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerViewDepartureAndREturnDateFragmentBooking"
-                android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.SelectOneWayFragment"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tvTitleDepartureDateFragmentSelectOneWay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_select_one_way" />
-
-        </RelativeLayout>
+                android:text="@string/departure_date"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary_font_color"/>
+            <TextView
+                android:id="@+id/tvDateDepartureDateFragmentSelectOneWay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Day, xx Mont xxxx"
+                android:textAlignment="center"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/primary_blue_1"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -195,7 +207,7 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvFragmentContainer">
+        app:layout_constraintTop_toBottomOf="@+id/cvDateFligth">
 
         <RelativeLayout
             android:layout_width="wrap_content"

@@ -64,6 +64,12 @@ class ShowListFlightFragment : Fragment() {
                 bund.putInt("arrivalAirport", dataItemFlight.arrivalAirport!!.toInt())
                 bund.putString("arrivalDate", dataItemFlight.arrivalDate.toString())
 
+                bund.putString("depatureAirport", dataItemFlight.departureTerminal!!.name.toString())
+                bund.putString("depatureAirportCode", dataItemFlight.departureTerminal.code.toString())
+
+                bund.putString("arrivalAirport", dataItemFlight.arrivalTerminal!!.name.toString())
+                bund.putString("arrivalAirportCode", dataItemFlight.arrivalTerminal.code.toString())
+
                 Navigation.findNavController(requireView()).navigate(R.id.action_showListFlightFragment_to_detailFlightFragment,bund)
             }
 
