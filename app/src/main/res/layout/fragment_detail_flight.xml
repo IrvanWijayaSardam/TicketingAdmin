@@ -315,6 +315,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_toEndOf="@id/txt_selectClass"
                 android:entries="@array/classTypeId"
+
                 />
             <TextView
                 android:textSize="10sp"
