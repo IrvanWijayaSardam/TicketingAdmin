@@ -11,7 +11,7 @@ data class ResponseGetListUser(
 	val code: Int? = null,
 
 	@field:SerializedName("data")
-	val data: List<DataItem?>? = null,
+	val data: List<DataUserItem?>? = null,
 
 	@field:SerializedName("status")
 	val status: Boolean? = null

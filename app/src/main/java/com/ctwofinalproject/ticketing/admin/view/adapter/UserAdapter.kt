@@ -1,15 +1,19 @@
 package com.ctwofinalproject.ticketing.admin.view.adapter
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.ctwofinalproject.ticketing.admin.databinding.ItemChooseAllAirportBinding
+import com.ctwofinalproject.ticketing.admin.databinding.ItemShowUserBinding
+import com.ctwofinalproject.ticketing.admin.model.DataItem
 import com.ctwofinalproject.ticketing.admin.model.DataUserItem
 
-class UserAdapter(): RecyclerView.Adapter<ShowTicketAdapter.ViewHolder>() {
+class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
     private lateinit var context : Context
-    private lateinit var listener: AirportAdapter.onItemClickListener
+    private lateinit var listener: onItemClickListener
 
 
     private val diffCallback = object : DiffUtil.ItemCallback<DataUserItem>(){
@@ -26,20 +30,33 @@ class UserAdapter(): RecyclerView.Adapter<ShowTicketAdapter.ViewHolder>() {
 
     private val differ = AsyncListDiffer(this,diffCallback)
 
-
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ShowTicketAdapter.ViewHolder {
-        TODO("Not yet implemented")
+    inner class ViewHolder ( val binding : ItemShowUserBinding): RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                listener.onItemClick(differ.currentList[adapterPosition])
+            }
+        }
     }
 
-    override fun onBindViewHolder(holder: ShowTicketAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    interface onItemClickListener {
+        fun onItemClick(userDataItem: DataUserItem)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.ViewHolder {
+        val view = ItemShowUserBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.binding.txtEmailUser.text = differ.currentList[position].email
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        context = recyclerView.context
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return differ.currentList.size
     }
 }
