@@ -41,4 +41,8 @@ interface RestServiceMain {
                 @Body body: FlightBody
         ): Call<ResponseFlight>
 
+        @GET("api/users/")
+        fun getAllUser(
+        ):Call<ResponseGetListUser>
+
 }
