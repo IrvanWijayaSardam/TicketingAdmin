@@ -72,6 +72,7 @@
     <string name="create">CREATE</string>
     <string name="flight_name">Flight: </string>
     <string name="update">UPDATE</string>
+    <string name="delete">delete</string>
 
     <!--  dummy country  -->
     <string-array name="country">
