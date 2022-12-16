@@ -103,4 +103,9 @@
         <item>Business</item>
         <item>Economy</item>
     </string-array>
+
+    <integer-array name="classTypeId">
+        <item>1</item>
+        <item>2</item>
+    </integer-array>
 </resources>
