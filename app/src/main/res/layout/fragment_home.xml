@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#D4E0FF"
     tools:context=".view.ui.home.HomeFragment">
 
@@ -32,6 +32,8 @@
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/flight"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -58,6 +60,8 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/airport"
         android:layout_below="@+id/rl_box"
         android:layout_toEndOf="@+id/flight"
@@ -84,32 +88,39 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/payment"
-        android:layout_below="@+id/rl_box"
-        android:layout_toEndOf="@+id/airport"
-        android:layout_margin="25dp"
         android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_below="@+id/rl_box"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_toEndOf="@+id/airport">
 
         <ImageView
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_payment_24"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_baseline_payment_24" />
 
         <TextView
-            android:text="PAYMENT"
-            android:layout_marginTop="23dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="PAYMENT" />
 
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/profile"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -137,53 +148,63 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/user"
-        android:layout_below="@+id/airport"
-        android:layout_toEndOf="@+id/flight"
-        android:layout_margin="25dp"
         android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_below="@+id/airport"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_toEndOf="@+id/flight">
 
         <ImageView
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_edit_24"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_baseline_edit_24" />
 
         <TextView
-            android:text="EDIT USER"
-            android:layout_marginTop="23dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="EDIT USER" />
 
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
         android:id="@+id/others"
-        android:layout_below="@+id/payment"
-        android:layout_toEndOf="@+id/user"
-        android:layout_margin="25dp"
         android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_below="@+id/payment"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_toEndOf="@+id/user">
 
         <ImageView
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_more_horiz_24"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_baseline_more_horiz_24" />
 
         <TextView
-            android:text="MORE"
-            android:layout_marginTop="23dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="MORE" />
 
 
     </androidx.cardview.widget.CardView>

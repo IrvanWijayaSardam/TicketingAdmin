@@ -36,6 +36,9 @@ class HomeFragment : Fragment() {
             flight.setOnClickListener {
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_chooseActionFragment)
             }
+            user.setOnClickListener{
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_userFragment)
+            }
         }
     }
 }
