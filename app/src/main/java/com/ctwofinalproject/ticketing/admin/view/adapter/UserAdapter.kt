@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ctwofinalproject.ticketing.admin.databinding.ItemChooseAllAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.ItemShowUserBinding
-import com.ctwofinalproject.ticketing.admin.model.DataItem
 import com.ctwofinalproject.ticketing.admin.model.DataUserItem
 
 class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -49,6 +47,9 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.txtEmailUser.text = differ.currentList[position].email
+        holder.binding.txtNameUser.text = differ.currentList[position].firstname
+        holder.binding.txtGenderUser.text =differ.currentList[position].gender
+        holder.binding.txtAddressUser.text = differ.currentList[position].address!!.homeAddress
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
