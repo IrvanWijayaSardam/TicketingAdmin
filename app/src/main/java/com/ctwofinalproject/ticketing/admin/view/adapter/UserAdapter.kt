@@ -30,14 +30,18 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     inner class ViewHolder ( val binding : ItemShowUserBinding): RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.root.setOnClickListener {
+            binding.btnUpdateUser.setOnClickListener {
                 listener.onItemClick(differ.currentList[adapterPosition])
+            }
+            binding.btnDeleteUser.setOnClickListener {
+                listener.onItemDelete(differ.currentList[adapterPosition])
             }
         }
     }
 
     interface onItemClickListener {
         fun onItemClick(userDataItem: DataUserItem)
+        fun onItemDelete(userDataItem: DataUserItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.ViewHolder {
@@ -59,5 +63,8 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+    fun setOnItemClickListener(listener: onItemClickListener){
+        this.listener = listener
     }
 }

@@ -1,6 +1,8 @@
 package com.ctwofinalproject.ticketing.admin.view.ui.user
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentHomeBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentUserBinding
+import com.ctwofinalproject.ticketing.admin.model.DataUserItem
 import com.ctwofinalproject.ticketing.admin.view.adapter.AirportAdapter
 import com.ctwofinalproject.ticketing.admin.view.adapter.UserAdapter
 import com.ctwofinalproject.ticketing.admin.viewmodel.UserViewModel
@@ -44,6 +47,17 @@ class UserFragment : Fragment() {
                 binding.rvUserFUser.adapter = adapterUserAdapter
             }
         }
+
+        adapterUserAdapter.setOnItemClickListener(object : UserAdapter.onItemClickListener {
+            override fun onItemClick(userDataItem: DataUserItem) {
+                Log.d(TAG, "onItemClick: data yang mau di update ${userDataItem.email} ")
+            }
+
+            override fun onItemDelete(userDataItem: DataUserItem) {
+                Log.d(TAG, "onItemClick: data yang mau di delete ${userDataItem.email} ")
+            }
+
+        })
 
     }
 
