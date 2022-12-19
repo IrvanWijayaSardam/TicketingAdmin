@@ -60,29 +60,32 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp"
         android:id="@+id/airport"
-        android:layout_below="@+id/rl_box"
-        android:layout_toEndOf="@+id/flight"
-        android:layout_margin="25dp"
         android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_below="@+id/rl_box"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_toEndOf="@+id/flight"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
 
         <ImageView
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_connecting_airports_24"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_baseline_connecting_airports_24" />
 
         <TextView
-            android:text="AIRPORT"
-            android:layout_marginTop="23dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="AIRPORT" />
 
 
     </androidx.cardview.widget.CardView>

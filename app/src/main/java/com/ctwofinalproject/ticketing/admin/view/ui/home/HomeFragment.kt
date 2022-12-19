@@ -39,6 +39,9 @@ class HomeFragment : Fragment() {
             user.setOnClickListener{
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_userFragment)
             }
+            airport.setOnClickListener {
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_airportDataFragment)
+            }
         }
     }
 }
