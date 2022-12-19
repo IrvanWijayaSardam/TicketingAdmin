@@ -33,6 +33,29 @@
             android:fontFamily="@font/poppins"
             android:paddingStart="10dp"
             android:text="Soekarno Hatta International Airport" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_font_color"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnUpdateFallAirport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:text="Update" />
+
+            <Button
+                android:id="@+id/btnDeleteFallAirport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="Delete" />
+        </LinearLayout>
     </LinearLayout>
 
     <ImageView
@@ -66,30 +89,6 @@
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/background_color_white"
             android:textSize="15sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/primary_font_color"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/llAirportCodeItemChooseAirport"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llLocationChooseAllAirport">
-
-        <Button
-            android:id="@+id/btnUpdateFallAirport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Update" />
-
-        <Button
-            android:id="@+id/btnDeleteFallAirport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
