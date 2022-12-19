@@ -33,13 +33,13 @@ class HomeFragment : Fragment() {
     private fun initListener() {
 
         binding?.run {
-            flight.setOnClickListener {
+            llFlightFHomeFragment.setOnClickListener {
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_chooseActionFragment)
             }
-            user.setOnClickListener{
+            llUserFHome.setOnClickListener{
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_userFragment)
             }
-            airport.setOnClickListener {
+            llAirportFHome.setOnClickListener {
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_airportDataFragment)
             }
         }

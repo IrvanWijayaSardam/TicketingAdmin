@@ -73,9 +73,9 @@ class DetailFlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
             }
 
             btnCreateFlight.setOnClickListener{
-                detailFlightViewModel.updateFlight(FlightBody(Flight(txtDepature.toString(),1,txtArrivalTime.toString(),
+                detailFlightViewModel.updateFlight(FlightBody(Flight(txtDepature.text.toString(),1,txtArrivalTime.text.toString(),
                     1,tvDateDepartureDateFragmentSelectOneWay.toString(),1,2),
-                    Ticket()
+                    null
                 ))
             }
 

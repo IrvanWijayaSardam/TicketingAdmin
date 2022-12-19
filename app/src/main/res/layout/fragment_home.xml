@@ -74,6 +74,7 @@
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
+                    android:id="@+id/llFlightFHomeFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#D4E0FF"
@@ -112,6 +113,7 @@
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
+                    android:id="@+id/llAirportFHome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/secondary_font_color"
@@ -226,6 +228,7 @@
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
+                    android:id="@+id/llUserFHome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#D4E0FF"
