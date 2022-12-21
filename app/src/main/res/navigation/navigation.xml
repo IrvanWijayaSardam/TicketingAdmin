@@ -109,5 +109,14 @@
         android:id="@+id/airportDataFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.airportdata.AirportDataFragment"
         android:label="fragment_airport_data"
-        tools:layout="@layout/fragment_airport_data" />
+        tools:layout="@layout/fragment_airport_data" >
+        <action
+            android:id="@+id/action_airportDataFragment_to_airportDataDetailsFragment"
+            app:destination="@id/airportDataDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/airportDataDetailsFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.airportdata.AirportDataDetailsFragment"
+        android:label="fragment_airport_data_details"
+        tools:layout="@layout/fragment_airport_data_details" />
 </navigation>

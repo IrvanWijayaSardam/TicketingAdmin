@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
@@ -53,6 +54,7 @@ class AirportDataFragment : Fragment() {
         adapterAirportData.setOnItemClickListener(object : AirportDataAdapter.onItemClickListener{
             override fun onItemClick(airportData: DataItem) {
                 Log.d(TAG, "onItemClick: data yang mau di update ${airportData.code}")
+                Navigation.findNavController(requireView()).navigate(R.id.action_airportDataFragment_to_airportDataDetailsFragment)
             }
 
             override fun onItemDelete(airportData: DataItem) {

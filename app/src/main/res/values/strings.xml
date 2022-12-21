@@ -73,6 +73,11 @@
     <string name="flight_name">Flight: </string>
     <string name="update">UPDATE</string>
     <string name="delete">delete</string>
+    <string name="admin_string">admin</string>
+    <string name="name_airport">Name Airport</string>
+    <string name="code_airport">Code Airport</string>
+    <string name="terminal">Terminal</string>
+    <string name="let_s_go">Let\'s Go</string>
 
     <!--  dummy country  -->
     <string-array name="country">
