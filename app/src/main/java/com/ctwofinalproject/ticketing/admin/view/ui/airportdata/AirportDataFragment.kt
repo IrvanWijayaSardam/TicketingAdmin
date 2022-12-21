@@ -54,7 +54,9 @@ class AirportDataFragment : Fragment() {
         adapterAirportData.setOnItemClickListener(object : AirportDataAdapter.onItemClickListener{
             override fun onItemClick(airportData: DataItem) {
                 Log.d(TAG, "onItemClick: data yang mau di update ${airportData.code}")
-                Navigation.findNavController(requireView()).navigate(R.id.action_airportDataFragment_to_airportDataDetailsFragment)
+                var bund = Bundle()
+                bund.putParcelable("AirportDataDetails",airportData)
+                Navigation.findNavController(requireView()).navigate(R.id.action_airportDataFragment_to_airportDataDetailsFragment,bund)
             }
 
             override fun onItemDelete(airportData: DataItem) {

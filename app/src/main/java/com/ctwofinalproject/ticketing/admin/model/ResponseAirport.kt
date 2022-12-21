@@ -1,7 +1,10 @@
 package com.ctwofinalproject.ticketing.admin.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ResponseAirport(
 
 	@field:SerializedName("data")
@@ -12,8 +15,9 @@ data class ResponseAirport(
 
 	@field:SerializedName("message")
 	val message: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class DataItem(
 
 	@field:SerializedName("country")
@@ -42,4 +46,4 @@ data class DataItem(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
-)
+) : Parcelable

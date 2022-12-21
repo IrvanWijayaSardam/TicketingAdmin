@@ -1,11 +1,14 @@
 package com.ctwofinalproject.ticketing.admin.viewmodel
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ctwofinalproject.ticketing.admin.api.RestServiceMain
+import com.ctwofinalproject.ticketing.admin.data.AirportBody
 import com.ctwofinalproject.ticketing.admin.model.ResponseAirport
+import com.ctwofinalproject.ticketing.admin.model.ResponseDefault
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +19,7 @@ import javax.inject.Inject
 class AirportViewModel @Inject constructor(var api : RestServiceMain): ViewModel() {
     var liveDataAirport: MutableLiveData<ResponseAirport?> = MutableLiveData()
     var liveDataAirportSearch: MutableLiveData<ResponseAirport?> = MutableLiveData()
+    var liveDataResponseUpdate : MutableLiveData<ResponseDefault?> = MutableLiveData()
 
     fun getDataAirport(): MutableLiveData<ResponseAirport?> {
         return liveDataAirport
@@ -66,5 +70,26 @@ class AirportViewModel @Inject constructor(var api : RestServiceMain): ViewModel
 
         })
 
+    }
+
+    fun updateAirport(token : String, idAirport : String,body: AirportBody){
+        val client = api.updateAirport(token,idAirport,body)
+        client.enqueue(object : Callback<ResponseDefault>{
+            override fun onResponse(
+                call: Call<ResponseDefault>,
+                response: Response<ResponseDefault>
+            ) {
+                if(response.isSuccessful){
+                    liveDataResponseUpdate.postValue(response.body())
+                } else {
+                    liveDataResponseUpdate.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDefault>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
     }
 }

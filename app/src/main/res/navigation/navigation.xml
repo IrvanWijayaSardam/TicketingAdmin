@@ -118,5 +118,9 @@
         android:id="@+id/airportDataDetailsFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.airportdata.AirportDataDetailsFragment"
         android:label="fragment_airport_data_details"
-        tools:layout="@layout/fragment_airport_data_details" />
+        tools:layout="@layout/fragment_airport_data_details" >
+        <action
+            android:id="@+id/action_airportDataDetailsFragment_to_airportDataFragment"
+            app:destination="@id/airportDataFragment" />
+    </fragment>
 </navigation>

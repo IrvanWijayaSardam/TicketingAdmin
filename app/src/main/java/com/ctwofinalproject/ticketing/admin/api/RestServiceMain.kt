@@ -1,5 +1,6 @@
 package com.ctwofinalproject.ticketing.admin.api
 
+import com.ctwofinalproject.ticketing.admin.data.AirportBody
 import com.ctwofinalproject.ticketing.admin.data.FlightBody
 import com.ctwofinalproject.ticketing.admin.data.Login
 import com.ctwofinalproject.ticketing.admin.data.User
@@ -44,5 +45,12 @@ interface RestServiceMain {
         @GET("api/users/")
         fun getAllUser(
         ):Call<ResponseGetListUser>
+
+        @PUT("api/airports/edit/{query}")
+        fun updateAirport(
+                @Header("Authorization") autorization : String,
+                @Path("query") query : String,
+                @Body body : AirportBody
+        ) : Call<ResponseDefault>
 
 }
