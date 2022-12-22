@@ -1,7 +1,10 @@
 package com.ctwofinalproject.ticketing.admin.model
 
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
+@Parcelize
 data class ResponseGetListUser(
 
 	@field:SerializedName("msg")
@@ -15,8 +18,16 @@ data class ResponseGetListUser(
 
 	@field:SerializedName("status")
 	val status: Boolean? = null
-)
+) : Parcelable
 
+@Parcelize
+data class Roles(
+
+	@field:SerializedName("roleName")
+	val roleName: String? = null
+) : Parcelable
+
+@Parcelize
 data class DataUserItem(
 
 	@field:SerializedName("firstname")
@@ -31,8 +42,11 @@ data class DataUserItem(
 	@field:SerializedName("gender")
 	val gender: String? = null,
 
+	@field:SerializedName("phone")
+	val phone: String? = null,
+
 	@field:SerializedName("roles")
-	val roles: Any? = null,
+	val roles: Roles? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
@@ -40,10 +54,14 @@ data class DataUserItem(
 	@field:SerializedName("email")
 	val email: String? = null,
 
+	@field:SerializedName("pictures")
+	val pictures: String? = null,
+
 	@field:SerializedName("lastname")
 	val lastname: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Address(
 
 	@field:SerializedName("province")
@@ -54,4 +72,4 @@ data class Address(
 
 	@field:SerializedName("homeAddress")
 	val homeAddress: String? = null
-)
+) : Parcelable

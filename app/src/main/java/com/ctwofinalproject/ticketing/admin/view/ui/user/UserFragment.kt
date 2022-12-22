@@ -54,13 +54,9 @@ class UserFragment : Fragment() {
             override fun onItemClick(userDataItem: DataUserItem) {
                 Log.d(TAG, "onItemClick: data yang mau di update ${userDataItem.email} ")
                 var bund = Bundle()
-                bund.putString("namaUser", userDataItem.firstname + " " + userDataItem.lastname)
-                bund.putString("emailUser", userDataItem.email)
-                bund.putString("passwordUser", userDataItem.password)
-                bund.putString("genderUser", userDataItem.gender)
-                bund.putString("addressUser", userDataItem.address!!.homeAddress + " " + userDataItem.address.city + " "+ userDataItem.address.province)
+                bund.putParcelable("userDataItem",userDataItem)
 
-                Navigation.findNavController(requireView()).navigate(R.id.action_userFragment_to_detailUserFragment)
+                Navigation.findNavController(requireView()).navigate(R.id.action_userFragment_to_detailUserFragment,bund)
             }
 
             override fun onItemDelete(userDataItem: DataUserItem) {

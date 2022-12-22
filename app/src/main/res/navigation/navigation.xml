@@ -104,7 +104,11 @@
         android:id="@+id/detailUserFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.user.DetailUserFragment"
         android:label="fragment_detail_user"
-        tools:layout="@layout/fragment_detail_user" />
+        tools:layout="@layout/fragment_detail_user" >
+        <action
+            android:id="@+id/action_detailUserFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
     <fragment
         android:id="@+id/airportDataFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.airportdata.AirportDataFragment"

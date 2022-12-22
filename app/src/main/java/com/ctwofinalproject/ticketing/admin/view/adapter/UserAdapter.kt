@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.ItemShowUserBinding
 import com.ctwofinalproject.ticketing.admin.model.DataUserItem
 
@@ -54,6 +56,12 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
         holder.binding.txtNameUser.text = differ.currentList[position].firstname
         holder.binding.txtGenderUser.text =differ.currentList[position].gender
         holder.binding.txtAddressUser.text = differ.currentList[position].address!!.homeAddress
+
+        Glide.with(context)
+            .load(differ.currentList[position].pictures)
+            .error(R.drawable.img_guest)
+            .circleCrop()
+            .into(holder.binding.userIcon)
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

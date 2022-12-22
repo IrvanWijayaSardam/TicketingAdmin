@@ -1,9 +1,6 @@
 package com.ctwofinalproject.ticketing.admin.api
 
-import com.ctwofinalproject.ticketing.admin.data.AirportBody
-import com.ctwofinalproject.ticketing.admin.data.FlightBody
-import com.ctwofinalproject.ticketing.admin.data.Login
-import com.ctwofinalproject.ticketing.admin.data.User
+import com.ctwofinalproject.ticketing.admin.data.*
 import com.ctwofinalproject.ticketing.admin.model.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -51,6 +48,13 @@ interface RestServiceMain {
                 @Header("Authorization") autorization : String,
                 @Path("query") query : String,
                 @Body body : AirportBody
+        ) : Call<ResponseDefault>
+
+        @PUT("api/users/edit/{query}")
+        fun updateUser(
+                @Header("Authorization") autorization: String,
+                @Path("query") query: String,
+                @Body body: UserBody
         ) : Call<ResponseDefault>
 
 }
