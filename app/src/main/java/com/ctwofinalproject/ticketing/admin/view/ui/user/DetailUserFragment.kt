@@ -57,6 +57,7 @@ class DetailUserFragment : Fragment() {
         userViewModel.liveDataUpdateUser.observe(viewLifecycleOwner){
             if(it!= null){
                 if(it.code!!.equals(200)){
+                    userViewModel.liveDataUpdateUser.value = null
                     Toast.makeText(context, "User Updated Sucesfully", Toast.LENGTH_SHORT).show()
                     Navigation.findNavController(requireView()).navigate(R.id.action_detailUserFragment_to_userFragment)
                 } else {

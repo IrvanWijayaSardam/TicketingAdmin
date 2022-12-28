@@ -57,8 +57,9 @@ interface RestServiceMain {
                 @Body body: UserBody
         ) : Call<ResponseDefault>
 
-        @GET ("api/userbookings")
+        @GET("api/userbookings")
         fun getUserBooking(
+                @Header("Authorization") autorization: String
         ):Call<ResponseListUserBooking>
 
 }

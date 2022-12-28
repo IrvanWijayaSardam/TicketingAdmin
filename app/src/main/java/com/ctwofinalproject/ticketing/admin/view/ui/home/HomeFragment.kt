@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentHomeBinding
+import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 
 
 class HomeFragment : Fragment() {
@@ -41,6 +42,9 @@ class HomeFragment : Fragment() {
             }
             llAirportFHome.setOnClickListener {
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_airportDataFragment)
+            }
+            llListUserBooking.setOnClickListener {
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_listUserBookingFragment)
             }
         }
     }

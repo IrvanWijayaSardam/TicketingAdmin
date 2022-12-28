@@ -16,9 +16,8 @@ import javax.inject.Inject
 class ListUserBookingViewModel @Inject constructor(var api : RestServiceMain): ViewModel(){
     var liveDataUserBooking : MutableLiveData<ResponseListUserBooking?> = MutableLiveData()
 
-    fun getListUserBooking(){
-        fun getUserBooking(){
-            val client = api.getUserBooking()
+    fun getListUserBooking(token: String){
+            val client = api.getUserBooking(token)
             client.enqueue(object : Callback<ResponseListUserBooking>{
                 override fun onResponse(
                     call: Call<ResponseListUserBooking>,
@@ -37,5 +36,4 @@ class ListUserBookingViewModel @Inject constructor(var api : RestServiceMain): V
 
             })
         }
-    }
 }

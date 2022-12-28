@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_homeFragment_to_airportDataFragment"
             app:destination="@id/airportDataFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listUserBookingFragment"
+            app:destination="@id/listUserBookingFragment" />
     </fragment>
     <fragment
         android:id="@+id/flightFragment"
@@ -127,4 +130,18 @@
             android:id="@+id/action_airportDataDetailsFragment_to_airportDataFragment"
             app:destination="@id/airportDataFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/listUserBookingFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.listuserbooking.ListUserBookingFragment"
+        android:label="fragment_list_user_booking"
+        tools:layout="@layout/fragment_list_user_booking" >
+        <action
+            android:id="@+id/action_listUserBookingFragment_to_detailUserBookingFragment"
+            app:destination="@id/detailUserBookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailUserBookingFragment"
+        android:name="com.ctwofinalproject.ticketing.admin.view.ui.listuserbooking.DetailUserBookingFragment"
+        android:label="fragment_detail_user_booking"
+        tools:layout="@layout/fragment_detail_user_booking" />
 </navigation>
