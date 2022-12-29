@@ -97,10 +97,10 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
             }
 
             btnCreateFlight.setOnClickListener{
-                flightViewModel.createFlight(FlightBody(Flight("20:30:12", sharedPref.getInt("airportIdFrom", 0),
-                    "22:15:09", 1,sharedPref.getString("departureDateForApi", "").toString(),
+                flightViewModel.createFlight(FlightBody(Flight(txtDepatureTime.text.toString(), sharedPref.getInt("airportIdFrom", 0),
+                    txtArrivalTime.text.toString(), 1,sharedPref.getString("departureDateForApi", "").toString(),
                     1, sharedPref.getInt("airportIdTo",0),sharedPref.getString("returnDateForApi","")),
-                    Ticket("Indonesia", 10000000, 1)))
+                    Ticket("Indonesia", 10000, 1)))
             }
 
 

@@ -1,5 +1,6 @@
 package com.ctwofinalproject.ticketing.admin.data
 
+import android.widget.EditText
 import com.google.gson.annotations.SerializedName
 
 data class FlightBody(
@@ -40,12 +41,12 @@ data class Flight(
 
 data class Ticket(
 
-	@field:SerializedName("country")
-	val country: String? = null,
+    @field:SerializedName("country")
+    val country: String? = null,
 
-	@field:SerializedName("price")
-	val price: Int? = null,
+    @field:SerializedName("price")
+    val price: Int? = null,
 
-	@field:SerializedName("class_id")
-	val classId: Int? = null
+    @field:SerializedName("class_id")
+    val classId: Int? = null
 )

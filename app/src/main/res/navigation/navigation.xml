@@ -93,7 +93,11 @@
         android:id="@+id/detailFlightFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.flight.DetailFlightFragment"
         android:label="fragment_detail_flight"
-        tools:layout="@layout/fragment_detail_flight" />
+        tools:layout="@layout/fragment_detail_flight" >
+        <action
+            android:id="@+id/action_detailFlightFragment_to_airportFragment"
+            app:destination="@id/airportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.ctwofinalproject.ticketing.admin.view.ui.user.UserFragment"

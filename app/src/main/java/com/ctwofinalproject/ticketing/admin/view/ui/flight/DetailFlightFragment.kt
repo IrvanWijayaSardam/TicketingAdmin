@@ -2,6 +2,8 @@ package com.ctwofinalproject.ticketing.admin.view.ui.flight
 
 import android.app.TimePickerDialog
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -25,6 +27,8 @@ import java.util.*
 class DetailFlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
     private var _binding : FragmentDetailFlightBinding?                                  = null
     private val binding get()                                                            = _binding!!
+    lateinit var sharedPref                                                              : SharedPreferences
+    lateinit var editPref                                                                : SharedPreferences.Editor
     var idFlight                                                                         = ""
     val detailFlightViewModel                                                            : DetailFlightViewModel by viewModels()
 
@@ -48,6 +52,8 @@ class DetailFlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPref                                          = requireContext().getSharedPreferences("sharedairport", Context.MODE_PRIVATE)
+        editPref                                            = sharedPref.edit()
         getArgs()
         initListener()
         Log.d(TAG, "onViewCreated: ${idFlight}")
@@ -55,6 +61,14 @@ class DetailFlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
     private fun initListener() {
         binding?.run {
+            llBookFromFragmentBooking.setOnClickListener {
+                gotoSelectAirport("from","home")
+            }
+            llBookToFragmentBooking.setOnClickListener {
+                gotoSelectAirport("to","home")
+            }
+
+
             ivGotoBackFromFDetailFlight.setOnClickListener {
                 Navigation.findNavController(binding.root).popBackStack()
             }
@@ -86,6 +100,14 @@ class DetailFlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         hour = cal.get(Calendar.HOUR)
         minute = cal.get(Calendar.MINUTE)
     }
+
+    fun gotoSelectAirport(fromto : String, fFragment : String){
+        var bund = Bundle()
+        bund.putString("fromto",fromto)
+        bund.putString("fromFragment",fFragment)
+        Navigation.findNavController(requireView()).navigate(R.id.action_detailFlightFragment_to_airportFragment,bund)
+    }
+
 
     private fun getArgs() {
         binding.tvFromAirportNameFragmentBooking.text = arguments?.getString("depatureAirport","")
