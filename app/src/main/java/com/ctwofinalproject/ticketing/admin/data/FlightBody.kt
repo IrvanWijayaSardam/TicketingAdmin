@@ -1,6 +1,5 @@
 package com.ctwofinalproject.ticketing.admin.data
 
-import android.widget.EditText
 import com.google.gson.annotations.SerializedName
 
 data class FlightBody(
