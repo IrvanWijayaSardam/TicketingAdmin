@@ -16,6 +16,7 @@ import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentShowListFlightBinding
 import com.ctwofinalproject.ticketing.admin.model.DataItemFlight
 import com.ctwofinalproject.ticketing.admin.view.adapter.ShowTicketAdapter
+import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 import com.ctwofinalproject.ticketing.admin.viewmodel.ShowListFlightViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,10 @@ class ShowListFlightFragment : Fragment() {
     private val binding get()                                                     = _binding!!
     lateinit var adapterShowTicket                                                : ShowTicketAdapter
     val viewModelShowListFlight                                                   : ShowListFlightViewModel by viewModels()
+    val viewmodelProto                                                            : ProtoViewModel by viewModels()
     private lateinit var builder                                                  : AlertDialog.Builder
+    var token                                                                     = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +46,13 @@ class ShowListFlightFragment : Fragment() {
         adapterShowTicket                                   = ShowTicketAdapter()
         builder                                             = AlertDialog.Builder(requireActivity())
 
-        viewModelShowListFlight.getAllFlight()
+        viewmodelProto.dataUser.observe(viewLifecycleOwner){
+            if(it.isLogin){
+                token = it.token
+                viewModelShowListFlight.getAllFlight("Bearer " + token)
+            }
+        }
+
         viewModelShowListFlight.liveDataFlight.observe(viewLifecycleOwner){
             if (it != null) {
                 adapterShowTicket.submitList(it.data!!)

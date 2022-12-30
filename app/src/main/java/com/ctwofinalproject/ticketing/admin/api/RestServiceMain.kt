@@ -28,11 +28,14 @@ interface RestServiceMain {
 
         @POST("api/flight/create")
         fun createFlight(
+            @Header("Authorization") autorization: String,
             @Body body : FlightBody
         ): Call<ResponseFlight>
 
         @GET("api/flight")
-        fun getAllFlight() : Call<ResponseGetAllFlight>
+        fun getAllFlight(
+                @Header("Authorization") autorization: String
+        ) : Call<ResponseGetAllFlight>
 
         @POST("api/flight/create")
         fun updateFlight(

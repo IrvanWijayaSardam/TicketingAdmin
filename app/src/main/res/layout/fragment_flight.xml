@@ -381,7 +381,7 @@
                         android:layout_below="@+id/txt_selectClass"
                         android:layout_centerInParent="true"
                         android:layout_toEndOf="@+id/txtPrice"
-                        android:inputType="text" />
+                        android:inputType="number" />
 
 
                 </RelativeLayout>

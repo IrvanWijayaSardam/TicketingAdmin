@@ -19,7 +19,9 @@ import com.ctwofinalproject.ticketing.admin.data.FlightBody
 import com.ctwofinalproject.ticketing.admin.data.Ticket
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentFlightBinding
+import com.ctwofinalproject.ticketing.admin.util.ShowSnack
 import com.ctwofinalproject.ticketing.admin.viewmodel.FlightViewModel
+import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
@@ -31,6 +33,9 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
     lateinit var sharedPref                                                : SharedPreferences
     lateinit var editPref                                                  : SharedPreferences.Editor
     val flightViewModel                                                    : FlightViewModel by viewModels()
+    private val viewmodelProto                                             : ProtoViewModel by viewModels()
+    var token                                                              = ""
+    var isOneWay                                                           = true
 
     var hour = 0
     var minute = 0
@@ -55,6 +60,19 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         sharedPref                                          = requireContext().getSharedPreferences("sharedairport", Context.MODE_PRIVATE)
         editPref                                            = sharedPref.edit()
         initListener()
+        viewmodelProto.dataUser.observe(viewLifecycleOwner){
+            token = it.token
+        }
+        flightViewModel.livedataCreateFlight.observe(viewLifecycleOwner){
+            if(it != null){
+                if(it.code!!.equals(200)){
+                    ShowSnack.show(binding.root,"Success Create Flight")
+                } else {
+                    ShowSnack.show(binding.root,"Failed Create Flight")
+                }
+            }
+        }
+
 
     }
 
@@ -75,6 +93,7 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
             cvOneWaySearchFlightFragmentBooking.setOnClickListener {
 //            switch to framgent SelectOneWayFragment
+                isOneWay = true
                 cvOneWaySearchFlightFragmentBooking.setCardBackgroundColor(resources.getColor(R.color.primary_blue_1))
                 cvRoundTripSearchFlightFragmentBooking.setCardBackgroundColor(resources.getColor(R.color.secondary_font_color))
                 val selectOneWayFragment = SelectOneWayFragment()
@@ -85,6 +104,7 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
                 transaction?.commit()
             }
             cvRoundTripSearchFlightFragmentBooking.setOnClickListener {
+                isOneWay = false
                 cvRoundTripSearchFlightFragmentBooking.setCardBackgroundColor(resources.getColor(R.color.primary_blue_1))
                 cvOneWaySearchFlightFragmentBooking.setCardBackgroundColor(resources.getColor(R.color.secondary_font_color))
                 //            switch to framgent SelectRoundTripFragment
@@ -97,12 +117,22 @@ class FlightFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
             }
 
             btnCreateFlight.setOnClickListener{
-                flightViewModel.createFlight(FlightBody(Flight(txtDepatureTime.text.toString(), sharedPref.getInt("airportIdFrom", 0),
-                    txtArrivalTime.text.toString(), 1,sharedPref.getString("departureDateForApi", "").toString(),
-                    1, sharedPref.getInt("airportIdTo",0),sharedPref.getString("returnDateForApi","")),
-                    Ticket("Indonesia", 10000, 1)))
+                if(isOneWay){
+                    flightViewModel.createFlight("bearer "+token,FlightBody(Flight(binding.txtDepatureTime.text.toString(), sharedPref.getInt("airportIdFrom", 0),
+                        binding.txtArrivalTime.text.toString(), 1,sharedPref.getString("departureDateForApi", "").toString(),
+                        1, sharedPref.getInt("airportIdTo",0),sharedPref.getString("returnDateForApi","")),
+                        Ticket("Indonesia", binding.etHarga.text.toString().toInt(), 1)))
+                } else {
+                    flightViewModel.createFlight("bearer "+token,FlightBody(Flight(binding.txtDepatureTime.text.toString(), sharedPref.getInt("airportIdFrom", 0),
+                        binding.txtArrivalTime.text.toString(), 1,sharedPref.getString("departureDateForApi", "").toString(),
+                        1, sharedPref.getInt("airportIdTo",0),sharedPref.getString("returnDateForApi","")),
+                        Ticket("Indonesia", binding.etHarga.text.toString().toInt(), 1)))
+                    flightViewModel.createFlight("bearer "+token,FlightBody(Flight(binding.txtDepatureTime.text.toString(),sharedPref.getInt("airportIdTo",0),
+                        binding.txtArrivalTime.text.toString(), 1,sharedPref.getString("returnDateForApi","").toString(),
+                        1, sharedPref.getInt("airportIdFrom", 0),sharedPref.getString("returnDateForApi","")),
+                        Ticket("Indonesia", binding.etHarga.text.toString().toInt(), 1)))
+                }
             }
-
 
             iconTimeDepature.setOnClickListener{
                 selectTime = "depature"

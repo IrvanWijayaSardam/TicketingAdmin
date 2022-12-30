@@ -2,6 +2,7 @@ package com.ctwofinalproject.ticketing.admin.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ctwofinalproject.ticketing.admin.api.RestServiceMain
 import com.ctwofinalproject.ticketing.admin.data.FlightBody
@@ -14,18 +15,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FlightViewModel @Inject constructor(var api : RestServiceMain): ViewModel(){
+    var livedataCreateFlight : MutableLiveData<ResponseFlight?> = MutableLiveData()
 
-
-    fun createFlight(flightBody: FlightBody){
-        val client = api.createFlight(flightBody)
+    fun createFlight(token : String,flightBody: FlightBody){
+        val client = api.createFlight(token,flightBody)
         client.enqueue(object : Callback<ResponseFlight>{
             override fun onResponse(
                 call: Call<ResponseFlight>,
                 response: Response<ResponseFlight>
             ) {
                 if (response.isSuccessful){
+                    livedataCreateFlight.postValue(response.body())
                     Log.d(TAG, "onResponse: create succses")
                 }else{
+                    livedataCreateFlight.value = null
                     Log.d(TAG, "onResponse: create failed")
                 }
             }

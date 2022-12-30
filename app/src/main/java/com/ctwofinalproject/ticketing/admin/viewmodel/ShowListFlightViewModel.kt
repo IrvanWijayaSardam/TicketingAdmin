@@ -16,8 +16,8 @@ import javax.inject.Inject
 class ShowListFlightViewModel @Inject constructor(var api: RestServiceMain): ViewModel() {
     var liveDataFlight : MutableLiveData<ResponseGetAllFlight?> = MutableLiveData()
     
-    fun getAllFlight(){
-        val client = api.getAllFlight()
+    fun getAllFlight(token: String){
+        val client = api.getAllFlight(token)
         client.enqueue(object : Callback<ResponseGetAllFlight>{
             override fun onResponse(
                 call: Call<ResponseGetAllFlight>,
@@ -33,7 +33,6 @@ class ShowListFlightViewModel @Inject constructor(var api: RestServiceMain): Vie
             override fun onFailure(call: Call<ResponseGetAllFlight>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
             }
-
         })
     }
     
