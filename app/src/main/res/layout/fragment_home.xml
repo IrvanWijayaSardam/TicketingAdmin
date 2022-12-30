@@ -145,81 +145,81 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                app:cardCornerRadius="10dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#D4E0FF"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="#D4E0FF"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/ic_baseline_payment_24" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@drawable/ic_baseline_payment_24" />-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Payment"
-                        android:textColor="@color/primary_font_color"
-                        android:textSize="18sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:fontFamily="@font/poppins_semibold"-->
+<!--                        android:text="Payment"-->
+<!--                        android:textColor="@color/primary_font_color"-->
+<!--                        android:textSize="18sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivPaymentFragmentHomeAdmin"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/primary_blue_1"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivPaymentFragmentHomeAdmin"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@color/primary_blue_1"-->
+<!--                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                app:cardCornerRadius="10dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/secondary_font_color"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@color/secondary_font_color"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/ic_outline_account_circle_24" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@drawable/ic_outline_account_circle_24" />-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Profile"
-                        android:textColor="@color/primary_font_color"
-                        android:textSize="18sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:fontFamily="@font/poppins_semibold"-->
+<!--                        android:text="Profile"-->
+<!--                        android:textColor="@color/primary_font_color"-->
+<!--                        android:textSize="18sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivProfileFragmentHomeAdmin"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/primary_blue_1"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivProfileFragmentHomeAdmin"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@color/primary_blue_1"-->
+<!--                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
