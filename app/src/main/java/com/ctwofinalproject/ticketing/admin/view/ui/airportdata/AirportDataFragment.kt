@@ -17,6 +17,7 @@ import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportDataBinding
 import com.ctwofinalproject.ticketing.admin.model.DataItem
+import com.ctwofinalproject.ticketing.admin.util.ShowSnack
 import com.ctwofinalproject.ticketing.admin.view.adapter.AirportDataAdapter
 import com.ctwofinalproject.ticketing.admin.viewmodel.AirportViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,6 +53,16 @@ class AirportDataFragment : Fragment() {
                 binding.rvAirportData.layoutManager =
                     LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 binding.rvAirportData.adapter = adapterAirportData
+            }
+
+            viewModelAirport.liveDataDeleteAirport.observe(viewLifecycleOwner){
+                if (it != null){
+                    if (it.code!!.equals(200)){
+                        ShowSnack.show(binding.root,"User Deleted")
+                        viewModelAirport.getDataAirport()
+                        viewModelAirport.liveDataDeleteAirport.value = null
+                    }
+                }
             }
         }
 
