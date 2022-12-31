@@ -1,6 +1,8 @@
 package com.ctwofinalproject.ticketing.admin.view.ui.user
 
+import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -30,6 +32,7 @@ class UserFragment : Fragment() {
     lateinit var adapterUserAdapter                                       : UserAdapter
     private val userViewModel                                             : UserViewModel by viewModels()
     val viewModelProto                                                    : ProtoViewModel by viewModels()
+    private lateinit var builder                                          : AlertDialog.Builder
     var token                                                             = ""
     var userId                                                            = ""
 
@@ -84,7 +87,21 @@ class UserFragment : Fragment() {
             }
 
             override fun onItemDelete(userDataItem: DataUserItem) {
-               userViewModel.deleteUser("bearer "+token, userDataItem.id!!)
+//                builder.setTitle("Delete Item ${userDataItem.id}")
+//                    .setMessage("Are you sure want to delete this flight ?")
+//                    .setCancelable(true)
+//                    .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        //Function delete
+//
+//                        dialogInterface.dismiss()
+//                    })
+//                    .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        dialogInterface.dismiss()
+//                    })
+//                    .show()
+                userViewModel.deleteUser("bearer "+token, userDataItem.id!!)
+
+
             }
 
         })

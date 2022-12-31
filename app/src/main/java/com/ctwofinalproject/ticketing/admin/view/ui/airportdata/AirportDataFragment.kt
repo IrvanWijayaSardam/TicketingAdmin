@@ -1,7 +1,9 @@
 package com.ctwofinalproject.ticketing.admin.view.ui.airportdata
 
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -25,6 +27,8 @@ class AirportDataFragment : Fragment() {
     private val binding get()                                                  = _binding!!
     val viewModelAirport                                                       : AirportViewModel by viewModels()
     lateinit var adapterAirportData                                            : AirportDataAdapter
+    var token                                                                  = ""
+    private lateinit var builder                                               : AlertDialog.Builder
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +65,20 @@ class AirportDataFragment : Fragment() {
 
             override fun onItemDelete(airportData: DataItem) {
                 Log.d(TAG, "onItemClick: data yang mau di delete ${airportData.code}")
+//                builder.setTitle("Delete Item ${airportData.id}")
+//                    .setMessage("Are you sure want to delete this flight ?")
+//                    .setCancelable(true)
+//                    .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        //Function delete
+//
+//                        dialogInterface.dismiss()
+//                    })
+//                    .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
+//                        dialogInterface.dismiss()
+//                    })
+//                    .show()
+                viewModelAirport.deleteAirport("bearer "+token, airportData.id!!)
+
             }
 
         })
