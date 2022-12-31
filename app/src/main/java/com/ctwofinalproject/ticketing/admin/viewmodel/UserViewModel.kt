@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.ctwofinalproject.ticketing.admin.api.RestServiceMain
 import com.ctwofinalproject.ticketing.admin.data.UserBody
 import com.ctwofinalproject.ticketing.admin.model.ResponseDefault
+import com.ctwofinalproject.ticketing.admin.model.ResponseDeleteUser
 import com.ctwofinalproject.ticketing.admin.model.ResponseGetListUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -19,6 +20,7 @@ import javax.inject.Inject
 class UserViewModel @Inject constructor(var api : RestServiceMain):ViewModel() {
     var liveDataUser : MutableLiveData<ResponseGetListUser?> = MutableLiveData()
     var liveDataUpdateUser : MutableLiveData<ResponseDefault?> = MutableLiveData()
+    var liveDataDeleteUser : MutableLiveData<ResponseDeleteUser?> = MutableLiveData()
 
     fun getAllUser(){
         val client = api.getAllUser()
@@ -38,6 +40,27 @@ class UserViewModel @Inject constructor(var api : RestServiceMain):ViewModel() {
                 Log.d(ContentValues.TAG, "onFailure: ${t.message}")
             }
 
+
+        })
+    }
+
+    fun deleteUser(token: String,idUser: Int){
+        val client = api.deleteUser(token,idUser)
+        client.enqueue(object : Callback<ResponseDeleteUser>{
+            override fun onResponse(
+                call: Call<ResponseDeleteUser>,
+                response: Response<ResponseDeleteUser>
+            ) {
+                if(response.isSuccessful){
+                    liveDataDeleteUser.postValue(response.body())
+                } else {
+                    liveDataDeleteUser.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDeleteUser>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
 
         })
     }

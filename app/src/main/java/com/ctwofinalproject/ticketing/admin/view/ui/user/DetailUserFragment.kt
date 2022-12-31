@@ -103,9 +103,11 @@ class DetailUserFragment : Fragment() {
         binding.tIFirstNameUpUser.setText(dataUserItem!!.firstname!!.toString())
         binding.tILastNameUpUser.setText(dataUserItem!!.lastname!!.toString())
         binding.tIphoneNumberUpProfile.setText(dataUserItem!!.phone!!.toString())
-        binding.tIHomeAddressUpProfile.setText(dataUserItem!!.address!!.homeAddress!!.toString())
-        binding.tIProvince.setText(dataUserItem!!.address!!.province!!.toString())
-        binding.tICityUpProfile.setText(dataUserItem!!.address!!.city!!.toString())
+        if(dataUserItem!!.address!!.homeAddress != null){
+            binding.tIHomeAddressUpProfile.setText(dataUserItem!!.address!!.homeAddress!!.toString())
+            binding.tIProvince.setText(dataUserItem!!.address!!.province!!.toString())
+            binding.tICityUpProfile.setText(dataUserItem!!.address!!.city!!.toString())
+        }
         setProfile(dataUserItem!!.pictures.toString())
     }
 

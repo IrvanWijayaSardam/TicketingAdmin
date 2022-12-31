@@ -15,8 +15,10 @@ import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentHomeBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentUserBinding
 import com.ctwofinalproject.ticketing.admin.model.DataUserItem
+import com.ctwofinalproject.ticketing.admin.util.ShowSnack
 import com.ctwofinalproject.ticketing.admin.view.adapter.AirportAdapter
 import com.ctwofinalproject.ticketing.admin.view.adapter.UserAdapter
+import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 import com.ctwofinalproject.ticketing.admin.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +29,11 @@ class UserFragment : Fragment() {
     private val binding get()                                             = _binding!!
     lateinit var adapterUserAdapter                                       : UserAdapter
     private val userViewModel                                             : UserViewModel by viewModels()
+    val viewModelProto                                                    : ProtoViewModel by viewModels()
+    var token                                                             = ""
+    var userId                                                            = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +46,23 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterUserAdapter                                              = UserAdapter()
+        viewModelProto.dataUser.observe(viewLifecycleOwner){
+            if(it.isLogin){
+                token = it.token
+            } else {
+                Log.d(TAG, "onViewCreated: require login")
+            }
+        }
+
+        userViewModel.liveDataDeleteUser.observe(viewLifecycleOwner){
+            if(it != null){
+                if(it.code!!.equals(200)){
+                    ShowSnack.show(binding.root,"User Deleted")
+                    userViewModel.getAllUser()
+                    userViewModel.liveDataDeleteUser.value = null
+                }
+            }
+        }
 
         userViewModel.getAllUser()
         userViewModel.liveDataUser.observe(viewLifecycleOwner){
@@ -60,7 +84,7 @@ class UserFragment : Fragment() {
             }
 
             override fun onItemDelete(userDataItem: DataUserItem) {
-                Log.d(TAG, "onItemClick: data yang mau di delete ${userDataItem.email} ")
+               userViewModel.deleteUser("bearer "+token, userDataItem.id!!)
             }
 
         })

@@ -65,4 +65,10 @@ interface RestServiceMain {
                 @Header("Authorization") autorization: String
         ):Call<ResponseListUserBooking>
 
+        @DELETE("api/users/delete/{idUser}")
+        fun deleteUser(
+                @Header("Authorization") authorization : String,
+                @Path("idUser") idUser : Int
+        ): Call<ResponseDeleteUser>
+
 }
