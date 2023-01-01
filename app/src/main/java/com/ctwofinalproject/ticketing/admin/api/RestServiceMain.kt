@@ -71,4 +71,10 @@ interface RestServiceMain {
                 @Path("idUser") idUser : Int
         ): Call<ResponseDeleteUser>
 
+        @DELETE("api/airports/delete/{idAirport}")
+        fun deleteAirport(
+                @Header("Authorization") authorization : String,
+                @Path("idAirport") idAirport : Int
+        ): Call<ResponseDeleteAirport>
+
 }

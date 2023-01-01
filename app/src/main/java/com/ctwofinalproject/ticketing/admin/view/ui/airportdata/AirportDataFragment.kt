@@ -1,7 +1,9 @@
 package com.ctwofinalproject.ticketing.admin.view.ui.airportdata
 
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,8 +17,10 @@ import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportDataBinding
 import com.ctwofinalproject.ticketing.admin.model.DataItem
+import com.ctwofinalproject.ticketing.admin.util.ShowSnack
 import com.ctwofinalproject.ticketing.admin.view.adapter.AirportDataAdapter
 import com.ctwofinalproject.ticketing.admin.viewmodel.AirportViewModel
+import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +28,10 @@ class AirportDataFragment : Fragment() {
     private var _binding : FragmentAirportDataBinding?                         = null
     private val binding get()                                                  = _binding!!
     val viewModelAirport                                                       : AirportViewModel by viewModels()
+    val viewmodelProto                                                         : ProtoViewModel by viewModels()
     lateinit var adapterAirportData                                            : AirportDataAdapter
+    private lateinit var builder                                               : AlertDialog.Builder
+    var token                                                                  = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +45,13 @@ class AirportDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapterAirportData                 = AirportDataAdapter()
+        builder                             = AlertDialog.Builder(requireActivity())
+        viewmodelProto.dataUser.observe(viewLifecycleOwner){
+            if(it.isLogin){
+                token = it.token
+            }
+        }
+
 
         getAllAirport()
         viewModelAirport.getDataAirport().observe(viewLifecycleOwner) {
@@ -51,6 +65,14 @@ class AirportDataFragment : Fragment() {
             }
         }
 
+        viewModelAirport.livedataResposeDeleteAirort.observe(viewLifecycleOwner){
+            if(it != null){
+                ShowSnack.show(binding.root,"Success Delete Airport")
+                getAllAirport()
+                viewModelAirport.livedataResposeDeleteAirort.value = null
+            }
+        }
+
         adapterAirportData.setOnItemClickListener(object : AirportDataAdapter.onItemClickListener{
             override fun onItemClick(airportData: DataItem) {
                 Log.d(TAG, "onItemClick: data yang mau di update ${airportData.code}")
@@ -60,7 +82,18 @@ class AirportDataFragment : Fragment() {
             }
 
             override fun onItemDelete(airportData: DataItem) {
-                Log.d(TAG, "onItemClick: data yang mau di delete ${airportData.code}")
+                builder.setTitle("Delete Item ${airportData.id}")
+                    .setMessage("Are you sure want to delete this airprot ?")
+                    .setCancelable(true)
+                    .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                        //Function delete
+                        viewModelAirport.deleteAirport("bearer "+token,airportData.id!!.toInt())
+                        dialogInterface.dismiss()
+                    })
+                    .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
+                        dialogInterface.dismiss()
+                    })
+                    .show()
             }
 
         })

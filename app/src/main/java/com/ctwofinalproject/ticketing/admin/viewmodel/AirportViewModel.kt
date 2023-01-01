@@ -9,6 +9,7 @@ import com.ctwofinalproject.ticketing.admin.api.RestServiceMain
 import com.ctwofinalproject.ticketing.admin.data.AirportBody
 import com.ctwofinalproject.ticketing.admin.model.ResponseAirport
 import com.ctwofinalproject.ticketing.admin.model.ResponseDefault
+import com.ctwofinalproject.ticketing.admin.model.ResponseDeleteAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +21,7 @@ class AirportViewModel @Inject constructor(var api : RestServiceMain): ViewModel
     var liveDataAirport: MutableLiveData<ResponseAirport?> = MutableLiveData()
     var liveDataAirportSearch: MutableLiveData<ResponseAirport?> = MutableLiveData()
     var liveDataResponseUpdate : MutableLiveData<ResponseDefault?> = MutableLiveData()
+    var livedataResposeDeleteAirort : MutableLiveData<ResponseDeleteAirport?> = MutableLiveData()
 
     fun getDataAirport(): MutableLiveData<ResponseAirport?> {
         return liveDataAirport
@@ -87,6 +89,27 @@ class AirportViewModel @Inject constructor(var api : RestServiceMain): ViewModel
             }
 
             override fun onFailure(call: Call<ResponseDefault>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun deleteAirport(token: String, idAiport : Int){
+        val client = api.deleteAirport(token,idAiport)
+        client.enqueue(object : Callback<ResponseDeleteAirport>{
+            override fun onResponse(
+                call: Call<ResponseDeleteAirport>,
+                response: Response<ResponseDeleteAirport>
+            ) {
+                if(response.isSuccessful){
+                    livedataResposeDeleteAirort.postValue(response.body())
+                } else {
+                    livedataResposeDeleteAirort.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseDeleteAirport>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
