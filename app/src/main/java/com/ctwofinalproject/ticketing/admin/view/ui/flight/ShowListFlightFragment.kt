@@ -15,6 +15,7 @@ import com.ctwofinalproject.ticketing.admin.R
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentAirportBinding
 import com.ctwofinalproject.ticketing.admin.databinding.FragmentShowListFlightBinding
 import com.ctwofinalproject.ticketing.admin.model.DataItemFlight
+import com.ctwofinalproject.ticketing.admin.util.ShowSnack
 import com.ctwofinalproject.ticketing.admin.view.adapter.ShowTicketAdapter
 import com.ctwofinalproject.ticketing.admin.viewmodel.ProtoViewModel
 import com.ctwofinalproject.ticketing.admin.viewmodel.ShowListFlightViewModel
@@ -66,6 +67,15 @@ class ShowListFlightFragment : Fragment() {
             }
         }
 
+        viewModelShowListFlight.liveDataDeleteFlight.observe(viewLifecycleOwner){
+            if(it != null){
+                ShowSnack.show(binding.root,"Success Delete Flight")
+                getAllFlight()
+                viewModelShowListFlight.liveDataDeleteFlight.value = null
+            }
+
+        }
+
         adapterShowTicket.setOnItemClickListener(object : ShowTicketAdapter.onItemClickListener{
             override fun onItemClick(dataItemFlight: DataItemFlight) {
                 var bund = Bundle()
@@ -93,6 +103,7 @@ class ShowListFlightFragment : Fragment() {
                     .setCancelable(true)
                     .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                         //Function delete
+                        viewModelShowListFlight.deleteFlight("bearer "+token,dataItemFlight.id!!.toInt())
                         dialogInterface.dismiss()
                     })
                     .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
@@ -103,4 +114,8 @@ class ShowListFlightFragment : Fragment() {
 
         })
     }
+    private fun getAllFlight() {
+        viewModelShowListFlight.getAllFlight(token)
+    }
+
 }

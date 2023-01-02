@@ -1,6 +1,7 @@
 package com.ctwofinalproject.ticketing.admin.api
 
 import com.ctwofinalproject.ticketing.admin.data.*
+import com.ctwofinalproject.ticketing.admin.data.Flight
 import com.ctwofinalproject.ticketing.admin.model.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -76,5 +77,11 @@ interface RestServiceMain {
                 @Header("Authorization") authorization : String,
                 @Path("idAirport") idAirport : Int
         ): Call<ResponseDeleteAirport>
+
+        @DELETE("api/flight/delete/{idFlight}")
+        fun deleteFlight(
+                @Header("Authorization") autorization: String,
+                @Path("idFlight") idFlight: Int
+        ):Call<ResponseDeleteFlight>
 
 }
