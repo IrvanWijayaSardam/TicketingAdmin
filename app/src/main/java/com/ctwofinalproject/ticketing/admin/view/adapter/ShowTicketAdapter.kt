@@ -46,7 +46,9 @@ class ShowTicketAdapter(): RecyclerView.Adapter<ShowTicketAdapter.ViewHolder>() 
         holder.binding.tvDepTimeItemShowTicket.text = differ.currentList[position].departureTime
         holder.binding.tvArrTimeItemShowTicket.text = differ.currentList[position].arrivalTime
         holder.binding.tvFlightNumberItemShowTicket.text = differ.currentList[position].id.toString()
-        holder.binding.tvFlightFrom.setText("Flight From ${differ.currentList[position].departureTerminal!!.code} to ${differ.currentList[position].arrivalTerminal!!.code}")
+        if(differ.currentList[position].departureTerminal != null && differ.currentList[position].arrivalTerminal != null){
+            holder.binding.tvFlightFrom.setText("Flight From ${differ.currentList[position].departureTerminal!!.code} to ${differ.currentList[position].arrivalTerminal!!.code}")
+        }
     }
 
     override fun getItemCount(): Int {
