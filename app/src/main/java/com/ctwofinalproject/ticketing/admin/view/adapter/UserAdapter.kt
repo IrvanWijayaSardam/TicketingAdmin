@@ -55,7 +55,9 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
         holder.binding.txtEmailUser.text = differ.currentList[position].email
         holder.binding.txtNameUser.text = differ.currentList[position].firstname
         holder.binding.txtGenderUser.text =differ.currentList[position].gender
-        holder.binding.txtAddressUser.text = differ.currentList[position].address!!.homeAddress
+        if(differ.currentList[position].address != null){
+            holder.binding.txtAddressUser.text = differ.currentList[position].address!!.homeAddress
+        }
 
         Glide.with(context)
             .load(differ.currentList[position].pictures)
