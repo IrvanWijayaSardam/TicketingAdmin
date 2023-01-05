@@ -103,7 +103,7 @@ class DetailUserFragment : Fragment() {
         binding.tIFirstNameUpUser.setText(dataUserItem!!.firstname!!.toString())
         binding.tILastNameUpUser.setText(dataUserItem!!.lastname!!.toString())
         binding.tIphoneNumberUpProfile.setText(dataUserItem!!.phone!!.toString())
-        if(dataUserItem!!.address!!.homeAddress != null){
+        if(dataUserItem!!.address!! != null){
             binding.tIHomeAddressUpProfile.setText(dataUserItem!!.address!!.homeAddress!!.toString())
             binding.tIProvince.setText(dataUserItem!!.address!!.province!!.toString())
             binding.tICityUpProfile.setText(dataUserItem!!.address!!.city!!.toString())

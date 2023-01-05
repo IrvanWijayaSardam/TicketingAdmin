@@ -36,18 +36,20 @@ class DetailUserBookingFragment : Fragment() {
 
     private fun getArgs() {
         dataItemListBooking = requireArguments().getParcelable("dataItemListBooking")
-        binding.tvNameUsersFDetailUserBooking.setText(dataItemListBooking!!.users!!.firstname + dataItemListBooking!!.users!!.lastname)
-        binding.tvTicketIdFDUserBooking.setText(dataItemListBooking!!.booking!!.ticketIdDeparture.toString())
-        binding.tvPriceDepartureFPDBooking.setText("IDR"+DecimalSeparator.formatDecimalSeperators(dataItemListBooking!!.booking!!.ticketDeparture!!.price.toString()))
-        binding.tvTotalPassenger.text = dataItemListBooking!!.booking!!.totalPassanger.toString()
+        if(dataItemListBooking!!.users != null){
+                binding.tvNameUsersFDetailUserBooking.setText(dataItemListBooking!!.users!!.firstname + dataItemListBooking!!.users!!.lastname)
 
-        if(dataItemListBooking!!.booking!!.ticketReturn != null){
-            binding.tvTicketReturnFDBooking.visibility = View.VISIBLE
-            binding.tvDepTimeReturnFBooking.visibility = View.VISIBLE
-            binding.tvPriceReturnFDBooking.visibility = View.VISIBLE
-            binding.tvDepTimeReturnFBooking.text = dataItemListBooking!!.booking!!.ticketReturn!!.id.toString()
-            binding.tvPriceReturnFDBooking.setText("IDR "+DecimalSeparator.formatDecimalSeperators(dataItemListBooking!!.booking!!.ticketReturn!!.price.toString()))
         }
+                binding.tvTicketIdFDUserBooking.setText(dataItemListBooking!!.booking!!.ticketIdDeparture.toString())
+                binding.tvPriceDepartureFPDBooking.setText("IDR"+DecimalSeparator.formatDecimalSeperators(dataItemListBooking!!.booking!!.ticketDeparture!!.price.toString()))
+                binding.tvTotalPassenger.text = dataItemListBooking!!.booking!!.totalPassanger.toString()
+            if(dataItemListBooking!!.booking!!.ticketReturn != null){
+                binding.tvTicketReturnFDBooking.visibility = View.VISIBLE
+                binding.tvDepTimeReturnFBooking.visibility = View.VISIBLE
+                binding.tvPriceReturnFDBooking.visibility = View.VISIBLE
+                binding.tvDepTimeReturnFBooking.text = dataItemListBooking!!.booking!!.ticketReturn!!.id.toString()
+                binding.tvPriceReturnFDBooking.setText("IDR "+DecimalSeparator.formatDecimalSeperators(dataItemListBooking!!.booking!!.ticketReturn!!.price.toString()))
+            }
     }
 
     private fun initListener() {
